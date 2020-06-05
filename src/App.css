@@ -1,38 +1,277 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  outline: none;
+  font-weight: 550;
+}
 .App {
-  text-align: center;
+  display: flex;
+  position: relative;
+}
+.Sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100vh;
+  background: #e5e5e5;
+  padding: 4rem 1rem;
+}
+.Main {
+  margin-left: 20%;
+}
+.allfolders button {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+.allfolders button:hover {
+  background: #ffffff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+.allfolders button i {
+  margin-right: 15px;
+  color: #7c7c7c;
+}
+.folders {
+  margin-top: 3rem;
+}
+.folder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+.folder.active {
+  background: #ffffff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+.folder:hover {
+  background: #ffffff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+.folder:hover > .delete {
+  display: block;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.folder button {
+  padding: 1rem;
+  width: 90%;
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  overflow:hidden;
+}
+.circle {
+  width: 1rem;
+  height: 1rem;
+  background: grey;
+  border-radius: 50%;
+  border: none;
+  margin-right: 10px;
+}
+.delete {
+  display: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #e3e3e3;
+  margin-right: 1rem;
+}
+.setfolder {
+  margin-top: 3rem;
+  padding: 1rem;
+}
+.setfolder button,
+.addTodo button {
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #767676;
+}
+.setfolder button span,
+.addTodo button span {
+  margin-right: 1rem;
+  font-size: 2rem;
+  color: #767676;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.addfolder {
+  position: absolute;
+  width: 23rem;
+  height: auto;
+  left: 10%;
+  bottom: 10%;
+  background: #ffffff;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 2rem 1rem;
+  z-index: 999;
+}
+form input[type="text"] {
+  width: 100%;
+  height: 3rem;
+  background: #ffffff;
+  border: 1px solid #efefef;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  font-size: 1.5rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.radio-toolbar input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+.radio-toolbar label {
+  display: inline-block;
+  background: #ddd;
+  padding: 0.5rem;
+  font-family: sans-serif, Arial;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  margin: 0.3rem;
+}
+.radio-toolbar input[type="radio"]:checked + label {
+  border-color: black;
+}
+button[type="submit"] {
+  width: 100%;
+  height: 3rem;
+  color: #ffffff;
+  background: #4dd599;
+  border-radius: 5px;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.addfolder .close {
+  position: absolute;
+  top: -3%;
+  right: -3%;
+  width: 2rem;
+  height: 2rem;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #5c5c5c;
+}
+.Main {
+  width: 80vw;
+  padding: 4rem;
+}
+.todos {
+  margin-bottom: 10rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  overflow: hidden;
+}
+.todos h1 {
+  font-size: 4rem;
+  
+}
+.line {
+  margin-top: 1rem;
+  width: 100%;
+  height: 5px;
+  background: #f2f2f2;
+}
+.addForm,
+.addTodo {
+  margin-top: 2rem;
+}
+.addTodo button[type="submit"],
+.addTodo button[type="reset"] {
+  border-radius: 5px;
+  margin-top: 1rem;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 3rem;
+  margin-right: 1rem;
+}
+.addTodo button[type="submit"] {
+  width: 30%;
+  color: #ffffff;
+  background: #4dd599;
+}
+.addTodo button[type="reset"] {
+  width: 20%;
+  background: #f4f6f8;
+}
+.addForm__btn {
+  display: flex;
+}
+.todo-item {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid #efefef;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.03);
+  
+}
+.box{
+  width: 90%;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+}
+.todo-item h3 {
+  width: 50%;
+}
+.deleteTodo {
+  cursor: pointer;
+}
+.todo-item input[type="checkbox"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+  margin-right: 1rem;
+}
+.todo-item label {
+  display: inline-block;
+  background: #ddd;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid #e8e8e8;
+  border-radius: 50%;
+  margin: 0.3rem;
+  position: relative;
+}
+.todo-item input[type="checkbox"]:checked + label {
+  background-color: #4dd599;
   color: white;
+  border: none;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo-item input[type="checkbox"]:checked + label::after{
+  content: "✔";
+  position: absolute;
+  top:5%;
+  left: 25%;
 }
