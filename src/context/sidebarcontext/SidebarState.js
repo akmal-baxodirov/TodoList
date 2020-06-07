@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import SidebarReducer from "./sidebarreducer";
 import SidebarContext from "./sidebarContext";
 import {
@@ -17,7 +17,15 @@ const SidebarState = (props) => {
     todos: [],
     allFolders: false,
   };
-  const [state, dispatch] = useReducer(SidebarReducer, initialState);
+  const [state, dispatch] = useReducer(SidebarReducer, initialState, () =>{
+    const loacalData = localStorage.getItem('state');
+    return loacalData ? JSON.parse(loacalData) : initialState
+  });
+
+  useEffect(() => {
+    localStorage.setItem('state', JSON.stringify(state))
+  }, [state]);
+
 
   const setFolder = (folderName, colors) => {
     dispatch({
